@@ -95,7 +95,7 @@ String[] array = new String[10];
 Arrays.stream(array);
 // Iterables
 Iterable<Resource> children = resource.getChildren();
-StreamSupport.stream(children.spliterator(), false);
+StreamSupport.stream(children.spliterator(), false); //parallel or not
 ```
 
 ### Filtering
@@ -158,4 +158,60 @@ max()  //and min() //reduces numbers to the max or min
 - https://medium.com/@yannickdot/functional-programming-101-6bc132674ec5
 
 
-#### Coming Soon: Dates and Optional
+## Optionals
+
+### Basic Methods
+
+_Optional\<T\>_
+- This is the Typed Wrapper for Optional. You supply a Type that the optional can be.
+
+_Optional.empty()_
+- The Java 8 version of null. 
+- Return this when you would normally return null.
+
+_Optional.ofNullable(object)_ 
+- This is the method that wraps an object as a Optional.
+> Object can be null.
+ 
+_Optional.of(object);_
+- This is the method that wraps an object as a Optional.
+> Object cannot be null.
+ 
+ 
+_Optional.get()_
+- Returns the value inside of the Optional.
+> This will throw an error if Optional is empty
+ 
+ 
+_Optional.isPresent()_
+- Returns a Boolean whether or not Optional is empty or not.
+> Must be called before  `Optional.get()`
+ 
+
+### Advanced Methods
+
+_ifPresent()_
+- This method takes a `Consumer<Object>` and calls it if the object is non null
+- Useful for setting fields from Optionals.
+
+`Optional.empty().ifPresent(object -> field = object.property);`
+
+_orElse()_
+- This method returns another object if the Optional is empty
+
+`Optional.empty().orElse(otherObject)`
+
+_orElseThrow()_
+- This method throws an exception if the Optional is empty
+
+`Optional.empty().orElseThrow(NullPointerException::new);`
+
+_map()_
+- This method will call map and return an Optional of the new type.
+
+`Optional.of(object).map(object::getPage).map(page::getName)`
+
+_flatMap()_
+- This method is similar to Map, but will unwrap a double Optional.
+
+`Optional.of(object).map(object::getOptionalPage).map(page::getName)`
