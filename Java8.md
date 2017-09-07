@@ -149,14 +149,8 @@ StreamSupport.stream(children.spliterator(), false); //parallel or not
 distinct() //filters out duplicate items
 limit(5)  //limit results to a certain count.
 max()  //and min() //reduces numbers to the max or min
+boxed() //converts primitives to boxed classes
 ```
-
-#### Helpful Resources
-
-- https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
-- https://zeroturnaround.com/rebellabs/java-8-streams-cheat-sheet/
-- https://medium.com/@yannickdot/functional-programming-101-6bc132674ec5
-
 
 ## Optionals
 
